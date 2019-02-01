@@ -7,7 +7,7 @@ import os
 
 subprocess.run("ls > filelist.csv", shell=True) #subprocess to create a list of files to parse in folder
 script_dir = os.path.dirname(__file__)
-output_dir = "RAW_RESULTS" #This is the subdirectory where the output raw .txt files will be saved
+output_dir = "RAW_RESULTS"
 try:
         subprocess.run("mkdir {}".format(output_dir), shell=True)
 except:
@@ -20,6 +20,8 @@ with open("filelist.csv") as flist:
         docxlist = [files for files in filelist if files[-5:] == ".docx"] #array of .docx files
         doclist = [files for files in filelist if files[-4:] == ".doc"] #array of .doc files
         pdflist = [files for files in filelist if files[-4:] == ".pdf"] #array of .pdf files
+
+
 
 def parsedocx(filename):
         global counter
@@ -38,8 +40,10 @@ def parsepdf(filename):
         global counter
         p = PdfFileReader(filename)
         total_pages = p.getNumPages()
+        with open(os.path.join(script_dir, output_dir + "/" + filename[:-4] + ".txt"), "w") as clr:
+                clr.write('')
         for page in range(total_pages):
-                page_content = "\nPage {}/{}".format(page, total_pages)+str(p.getPage(page).extractText())
+                page_content = "\n(Page {}/{})\n".format(page, total_pages)+str(p.getPage(page).extractText())
                 with open(os.path.join(script_dir, output_dir + "/" + filename[:-4] + ".txt"), "a+") as save:
                         save.write(page_content)
         counter+=1
