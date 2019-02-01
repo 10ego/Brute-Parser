@@ -7,7 +7,7 @@ import os
 
 subprocess.run("ls > filelist.csv", shell=True) #subprocess to create a list of files to parse in folder
 script_dir = os.path.dirname(__file__)
-output_dir = "RAW_RESULTS"
+output_dir = "RAW_RESULTS"  #This is the subdirectory where the output raw .txt files will be saved
 try:
         subprocess.run("mkdir {}".format(output_dir), shell=True)
 except:
