@@ -13,8 +13,6 @@ class docparse:
                         self.status = True
                 else:
                         self.status = False
-        def __call__(self):
-                return
 
         def parsedocx(self):
                 docx = docx2txt.process(self.filename)
