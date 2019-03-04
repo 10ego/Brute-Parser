@@ -17,4 +17,4 @@ This script will parse all supported file formats into .txt output and save it i
 
 # BruteParser built as a python class for improved extensibility
 
-See bruteparser-lib.py
+See [bruteparser-lib.py](https://github.com/10ego/Brute-Parser/blob/master/bruteparser-lib.py)
