@@ -1,5 +1,4 @@
 import docx2txt
-from docx import *
 import re
 import subprocess
 
