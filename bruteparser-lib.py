@@ -8,7 +8,7 @@ class docparse:
         def __init__(self, filename):
                 self.filename = filename
                 self.filetype = re.search(r'\.{1}\w+', filename).group(0)[1:]
-                self.acceptedType = ['doc', 'docx']
+                self.acceptedType = ['doc', 'docx', 'pdf']
                 if self.filetype in self.acceptedType:
                         self.status = True
                 else:
