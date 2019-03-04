@@ -13,3 +13,8 @@ This script will parse all supported file formats into .txt output and save it i
 .docx - [doc2txt](https://github.com/ankushshah89/python-docx2txt)
 
 .pdf - [PyPDF2](https://github.com/mstamy2/PyPDF2)
+
+
+# BruteParser built as a python class for improved extensibility
+
+See bruteparser-lib.py
