@@ -13,8 +13,6 @@ class docparse:
                         self.status = True
                 else:
                         self.status = False
-        def __call__(self):
-                return
 
         def parsedocx(self):
                 docx = docx2txt.process(self.filename)
@@ -25,12 +23,23 @@ class docparse:
                 doc = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE)
                 return doc.stdout.decode('utf-8')
 
+
+        def parsepdf(filename):
+                p = PdfFileReader(filename)
+                total_pages = p.getNumPages()
+                for page in range(total_pages):
+#                       page_content = "\n(Page {}/{})\n".format(page, total_pages)+str(p.getPage(page).extractText())
+                        page_content += str(p.getPage(page).extractTest()) + '\n'
+                return page_content
+
         def parse(self):
                 if self.status == True:
                         if self.filetype == 'doc':
                                 result = self.parsedoc()
                         elif self.filetype == 'docx':
                                 result = self.parsedocx()
+                        elif self.filetype == 'pdf':
+                                result = self.parsepdf()
                         return result
                 else:
                         return "The uploaded file ({}) is not a valid filetype ({})".format(self.filename, str(self.acceptedType))
