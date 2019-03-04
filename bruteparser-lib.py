@@ -1,4 +1,5 @@
 import docx2txt
+from PyPDF2 import PdfFileReader
 import re
 import subprocess
 
