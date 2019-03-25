@@ -7,7 +7,7 @@ class docparse:
 
         def __init__(self, filename):
                 self.filename = filename
-                self.filetype = re.search(r'\.{1}\w+', filename).group(0)[1:]
+                self.filetype = re.search(r'\.{1}\w+', filename).group(0)[1:].lower()
                 self.acceptedType = ['doc', 'docx', 'pdf']
                 if self.filetype in self.acceptedType:
                         self.status = True
@@ -24,12 +24,13 @@ class docparse:
                 return doc.stdout.decode('utf-8')
 
 
-        def parsepdf(filename):
+        def parsepdf(self):
                 p = PdfFileReader(filename)
                 total_pages = p.getNumPages()
+                page_content = ""
                 for page in range(total_pages):
 #                       page_content = "\n(Page {}/{})\n".format(page, total_pages)+str(p.getPage(page).extractText())
-                        page_content += str(p.getPage(page).extractTest()) + '\n'
+                        page_content += str(p.getPage(page).extractText()) + '\n'
                 return page_content
 
         def parse(self):
